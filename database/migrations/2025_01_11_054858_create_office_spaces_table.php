@@ -11,10 +11,17 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('cities', function (Blueprint $table) {
+        Schema::create('office_spaces', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('photo');
+            $table->string('thumbnail');
+            $table->string('address');
+            $table->boolean('is_open');
+            $table->boolean('is_full_booked');
+            $table->unsignedBigInteger('price');
+            $table->unsignedBigInteger('duration');
+            $table->text('about');
+            $table->foreignId('city_id')->constrained()->cascadeOnDelete();
             $table->string('slug')->unique();
             $table->softDeletes();
             $table->timestamps();
@@ -26,6 +33,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('cities');
+        Schema::dropIfExists('office_spaces');
     }
 };
