@@ -18,8 +18,8 @@ return new class extends Migration
             $table->string('address');
             $table->boolean('is_open');
             $table->boolean('is_full_booked');
-            $table->unsignedBigInteger('price');
-            $table->unsignedBigInteger('duration');
+            $table->unsignedInteger('price');
+            $table->unsignedInteger('duration');
             $table->text('about');
             $table->foreignId('city_id')->constrained()->cascadeOnDelete();
             $table->string('slug')->unique();
